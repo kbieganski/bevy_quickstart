@@ -1,0 +1,52 @@
+[package]
+name = "bevy_quickstart"
+version = "0.1.0"
+edition = "2021"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+lto = "thin"
+
+[dependencies]
+bevy_atmosphere = "0.2.0"
+bevy_mod_picking = "0.5"
+bevy_transform_gizmo = "0.1"
+bevy-inspector-egui = "0.7"
+bevy_prototype_debug_lines = { git = "https://github.com/Toqozz/bevy_debug_lines", branch = "bevy-main" }
+bevy_mod_debugdump = "0.3"
+bevy_discovery = "0.1"
+profiling = "1.0.5"
+puffin_egui = "0.12.0"
+
+[dependencies.bevy]
+version = "0.6"
+default-features = false
+features = [
+  "dynamic",
+  "render",
+  "bevy_winit",
+  "bevy_gilrs",
+  "png",
+  "hdr",
+  "filesystem_watcher",
+  "x11"
+]
+
+[dependencies.heron]
+version = "1.1.0"
+features = ["3d"]
+
+[dependencies.bevy_kira_audio]
+version = "0.8"
+features = [
+  "wav",
+  "ogg",
+]
+
+[features]
+profiler = ["profiling/profile-with-puffin"]
